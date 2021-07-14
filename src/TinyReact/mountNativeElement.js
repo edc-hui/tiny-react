@@ -8,5 +8,6 @@ import createDOMElement from "./createDOMElement";
 export default function mountNativeElement(virtualDOM, container) {
     // 此处封装createDOMElement函数，用于集中处理virtualDOM转化为真实DOM的过程
     const realDOMElement = createDOMElement(virtualDOM)
+    realDOMElement._virtualDOM = virtualDOM; // 记录生成真实DOM元素的虚拟DOM
     container.appendChild(realDOMElement); //将生成的真实DOM挂载到container父节点身上
 }

@@ -15,8 +15,8 @@ export default function createDOMElement(virtualDOM) {
         updateElementNode(virtualDOM, realDOMElement)
     }
     // 上述操作只是将当前虚拟DOM生成了真实的DOM，当前虚拟DOM的所有子节点好需要循环生成真实的DOM节点
-    virtualDOM.children.forEach(childNode => {
-        mountElement(childNode, realDOMElement) // 子节点要挂载到父节点身上，所以父节点就是当前的realDOMElement
+    virtualDOM.children.forEach(childNodeVirtualDOM => {
+        mountElement(childNodeVirtualDOM, realDOMElement) // 子节点要挂载到父节点身上，所以父节点就是当前的realDOMElement
     })
     return realDOMElement
 }
