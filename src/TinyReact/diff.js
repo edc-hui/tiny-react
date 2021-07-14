@@ -44,9 +44,9 @@ export default function diff(virtualDOM, container, oldDOM) {
                 const newRealDOM = createDOMElement(virtualDOM);
                 oldDOM.parentNode.replaceChild(newRealDOM, oldDOM);
             } else {
-
+                const oldComponent = oldVirtualDOM && oldVirtualDOM.component
                 // 说明虚拟DOM是组件，需要去比对组件的差异
-                // diffComponent(virtualDOM, oldVirtualDOM, oldDOM, container)
+                diffComponent(virtualDOM, oldComponent, oldDOM, container)
             }
 
         }

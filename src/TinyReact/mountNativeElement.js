@@ -10,4 +10,8 @@ export default function mountNativeElement(virtualDOM, container) {
     const realDOMElement = createDOMElement(virtualDOM)
     realDOMElement._virtualDOM = virtualDOM; // 记录生成真实DOM元素的虚拟DOM
     container.appendChild(realDOMElement); //将生成的真实DOM挂载到container父节点身上
+    const component = virtualDOM.component;
+    if (component) {
+        component.setDOM(realDOMElement)
+    }
 }
