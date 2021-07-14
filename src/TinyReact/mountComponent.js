@@ -17,6 +17,12 @@ export default function mountComponent(virtualDOM, container) {
         componentVirtualDOM = buildFunctionalComponent(virtualDOM);
     } else { // 说明是类组件
         componentVirtualDOM = buildClassComponent(virtualDOM)
+        const component = componentVirtualDOM.component; // 获取到组件的实例
+        component && component.componentDidMount(); // 执行组件的生命周期函数
+        if (component && component.props && component.props.ref) {
+            component.props.ref(component) // 将组件的实例传递给ref属性
+        }
+
     }
 
     // 判断返回的虚拟DOM是组件还是Native Element

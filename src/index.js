@@ -4,6 +4,19 @@ const root = document.getElementById("root");
 
 const Heart = () => <span>&hearts;</span>;
 
+class Abc extends TinyReact.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                {this.props.message}
+            </div>
+        )
+    }
+}
+
 class Alert extends TinyReact.Component {
     constructor(props) {
         super(props)
@@ -25,6 +38,22 @@ class Alert extends TinyReact.Component {
                 <h2>{this.state.title}</h2>
                 <p>{this.props.message}</p>
                 <button onClick={this.handleChange}>change title</button>
+                <Abc message={this.state.title} />
+            </div>
+        )
+    }
+}
+
+class DemoRef extends TinyReact.Component {
+    handle() {
+        let value = this.input.value
+        console.log(value)
+    }
+    render() {
+        return (
+            <div>
+                <input type="text" ref={input => (this.input = input)} />
+                <button onClick={this.handle.bind(this)}>按钮</button>
             </div>
         )
     }
@@ -49,6 +78,7 @@ const virtualDOM = (
         <input type="text" value="13"/>
         <Heart/>
         <br/>
+
         <Alert message="惠思雨"/>
     </div>
 )
